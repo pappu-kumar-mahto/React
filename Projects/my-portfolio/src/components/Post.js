@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import sanityClient from '../client.js'
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import sanityClient from "../client.js";
 
 export default function Home() {
+  const [postData, setPost] = useState(null);
 
-    const [postData, setPost] = useState(null)
-
-    useEffect(() => {
-        sanityClient.fetch(`*[_type == "post]{
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "post]{
             title,
             slug,
             mainImage{
@@ -17,29 +18,44 @@ export default function Home() {
                 },
                 alt
             }
-        }`)
-            .then((data) => setPost(data))
-            .catch(console.error)
-    }, [])
+        }`
+      )
+      .then((data) => setPost(data))
+      .catch(console.error);
+  }, []);
 
-    return (
-      <main>
-        <section>
-          <h1></h1>
-          <h2></h2>
-          <div>
-            <article>
-              <link>
-                <span>
-                  <img />
-                  <span>
-                    <h3></h3>
-                  </span>
-                </span>
-              </link>
-            </article>
-          </div>
-        </section>
-      </main>
-    );
+  return (
+    <main className="bg-green-100 min-h-screen p-12">
+      <section className="container mx-auto">
+        <h1 className="text-5xl flex justify-center cursive">Blog Post Page</h1>
+        <h2 className="text-lg text-grey-600 flex justify-center mb-12">
+          Welcome to my page of blog posts
+        </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  { postData && postData.map((post, index) => {
+                      <article>
+                          <Link
+                              to={"/post/" + post.slug.current}
+                              key={post.slug.current}
+                          >
+                              <span
+                                  className="block h-64 relative rounded shadow leading-snug bg-white border-l-8 border-green-400"
+                                  key={index}
+                              >
+                                  <img
+                                      src={post.mainImage.asset.url}
+                                      alt={post.mainImage.alt}
+                                      className="w-ful h-full rounded-r object-cover absolute"
+                                  />
+                                  <span className="block relative h-full flex justify-end items-end pr-4 pb-4">
+                                      <h3 className="text-grey800 text-lg font-bold px-3 py-4 bg-red-700 bg-opacity-75 rounded">{post.title}</h3>
+                                  </span>
+                              </span>
+                          </Link>
+                      </article>
+                 }) }
+        </div>
+      </section>
+    </main>
+  );
 }
