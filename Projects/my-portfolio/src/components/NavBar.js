@@ -39,21 +39,21 @@ export default function navBar() {
             className="mr-4"
             target="_blank"
             fgColor="#fff"
-            style={{ height: 45, width: 45 }}
+            style={{ height: 35, width: 35 }}
           />
           <SocialIcon
             url="https://www.linkedin.com/feed/?trk=homepage-basic_google-one-tap-submit"
             className="mr-4"
             target="_blank"
             fgColor="#fff"
-            style={{ height: 45, width: 45 }}
+            style={{ height: 35, width: 35 }}
           />
           <SocialIcon
             url="https://www.facebook.com/pappukumar.mahto"
             className="mr-4"
             target="_blank"
             fgColor="#fff"
-            style={{ height: 45, width: 45 }}
+            style={{ height: 35, width: 35 }}
           />
         </div>
       </div>
