@@ -32,7 +32,7 @@ export default function Home() {
           Welcome to my page of blog posts
         </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  { postData && postData.map((post, index) => {
+                  { postData && postData.map((post, index) => (
                       <article>
                           <Link
                               to={"/post/" + post.slug.current}
@@ -53,7 +53,7 @@ export default function Home() {
                               </span>
                           </Link>
                       </article>
-                 }) }
+                 )) }
         </div>
       </section>
     </main>
