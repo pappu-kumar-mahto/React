@@ -1,11 +1,12 @@
 import './App.css';
+import ChildComponent1 from './components/ChildComponent1'
+import ChildComponent2 from './components/ChildComponent2'
 
 function App() {
   return (
     <>
-    <div className="App">
-      We are Learning React by Ankit Sir
-    </div>
+      <ChildComponent1/>
+      <ChildComponent2/>
     </>
   );
 }
