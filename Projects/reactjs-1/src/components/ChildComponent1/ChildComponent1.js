@@ -17,7 +17,6 @@ const ChildComponent1 = () => {
             />
             <GrandChildComponent1
                 title="Heading 2"
-                description= "This is description for 2nd grandChild."
             />
            
         </div>
