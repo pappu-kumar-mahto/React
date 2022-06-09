@@ -1,11 +1,12 @@
 import React from "react"
 
-const GrandChildComponent1 = () =>{
+const GrandChildComponent1 = (props) => {
+    console.log(props)
+  
     return (
         <div className="grandChildComponent1">
-            <h3>
-                Grand Child Component 1
-            </h3>
+            <h3>{props.title}</h3>
+            <p>{ props.description }</p>
         </div>
     )
 }

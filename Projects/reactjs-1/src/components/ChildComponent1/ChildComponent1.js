@@ -11,8 +11,14 @@ const ChildComponent1 = () => {
             <h2>
                 Child Component 1
             </h2>
-            <GrandChildComponent1/>
-            <GrandChildComponent1 />
+            <GrandChildComponent1
+                title="Heading 1"
+                description="This is description for 1st grandChild."
+            />
+            <GrandChildComponent1
+                title="Heading 2"
+                description= "This is description for 2nd grandChild."
+            />
            
         </div>
     )
