@@ -1,7 +1,6 @@
 import React from "react"
 
-const GrandChildComponent1 = (props) => {
-    const {title, description} = props
+const GrandChildComponent1 = ({title, description}) => {
   
     return (
         <div className="grandChildComponent1">
