@@ -14,11 +14,12 @@ const ChildComponent1 = () => {
             <GrandChildComponent1
                 title="Heading 1"
                 description="This is description for 1st grandChild."
-                bgColor = "red"
+                bgColor="red"
             />
             <GrandChildComponent1
                 title="Heading 2"
-                bgColor = "green"
+                bgColor="green"
+                txtColor = "white"
             />
            
         </div>

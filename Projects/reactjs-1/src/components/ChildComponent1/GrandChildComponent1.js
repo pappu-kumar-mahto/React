@@ -1,11 +1,11 @@
 import React from "react"
 
-const GrandChildComponent1 = ({title, description, bgColor}) => {
+const GrandChildComponent1 = ({title, description, bgColor, txtColor}) => {
   
     return (
         <div
             className="grandChildComponent1"
-            style = {{backgroundColor: `${bgColor}`}}
+            style = {{backgroundColor: `${bgColor}`, color: `${txtColor}`}}
         >
             <h3>{title}</h3>
 
