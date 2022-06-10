@@ -1,9 +1,12 @@
 import React from "react"
 
-const GrandChildComponent1 = ({title, description}) => {
+const GrandChildComponent1 = ({title, description, bgColor}) => {
   
     return (
-        <div className="grandChildComponent1">
+        <div
+            className="grandChildComponent1"
+            style = {{backgroundColor: `${bgColor}`}}
+        >
             <h3>{title}</h3>
 
             {description && <p>{description}</p>}
@@ -12,3 +15,15 @@ const GrandChildComponent1 = ({title, description}) => {
 }
 
 export default GrandChildComponent1
+
+/*
+way to apply styling using props.
+<div
+            className="grandChildComponent1"
+            style = {{backgroundColor: `${bgColor}`}}
+        >
+            <h3>{title}</h3>
+
+            {description && <p>{description}</p>}
+        </div>
+*/
