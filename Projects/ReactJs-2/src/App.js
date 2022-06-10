@@ -1,7 +1,9 @@
 import './App.css';
-
+import HelloClass from"./components/HelloClass"
 function App() {
-  return 
+  return (
+    <HelloClass/>
+  )
 }
 
 export default App;
