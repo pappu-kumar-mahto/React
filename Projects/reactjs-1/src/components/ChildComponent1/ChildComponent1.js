@@ -1,6 +1,6 @@
 import React from 'react';
 import './ChildComponent1.css'
-import GrandChildComponent1 from "./GrandChildComponent1";
+import GrandChildComponent1 from "./GrandChildComponent1/GrandChildComponent1";
 
 
 const ChildComponent1 = () => {
@@ -19,7 +19,7 @@ const ChildComponent1 = () => {
             <GrandChildComponent1
                 title="Heading 2"
                 bgColor="green"
-                txtColor = "white"
+                txtColor="white"
             />
            
         </div>
