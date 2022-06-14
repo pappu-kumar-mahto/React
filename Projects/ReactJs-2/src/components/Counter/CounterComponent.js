@@ -8,11 +8,23 @@ class CounterComponent extends Component {
     };
   }
   increaseCounter = () => {
-      console.log(this.state.counter)
-      this.setState({
-      counter: this.state.counter + 1,
-    });
+      this.setState((prevCount)=>({
+      counter: prevCount.counter + 1,
+    }));
   };
+  decreaseCounter = () => {
+    this.setState({
+    counter: this.state.counter - 1,
+  });
+  };
+  
+  incrementfiveCounter = () => { 
+    this.increaseCounter()
+    this.increaseCounter()
+    this.increaseCounter()
+    this.increaseCounter()
+    this.increaseCounter()
+  }
   render() {
     const { counter } = this.state;
     return (
@@ -20,7 +32,9 @@ class CounterComponent extends Component {
         <h1>Counter</h1>
         <span className="counter">{counter}</span>
         <br />
-        <button onClick={this.increaseCounter}>Increase Counter</button>
+        <button onClick={this.incrementfiveCounter}>Increase Counter</button>
+        <br/>
+        <button onClick={this.decreaseCounter}>Decrease Counter</button>
       </>
     );
   }
