@@ -99,7 +99,7 @@ class CartComponent extends Component {
     };
     return (
       <>
-        {cartItems.filter(cartProduct => cartProduct.inCartStatus === true).map((cartItem) => (
+        {cartItems.map((cartItem) => (
           <div style={divStyle} key={cartItem.id}>
             <img src={cartItem.image} alt="Cart-Product" style={imgStyle} />
             <h5>{cartItem.title}</h5>
