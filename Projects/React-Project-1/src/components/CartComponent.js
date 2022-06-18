@@ -67,10 +67,11 @@ class CartComponent extends Component {
     };
   }
 
-  DeleteCartItem = () => {
-    this.setState((prevInCartStatus) => ({
-      inCartStatus: !prevInCartStatus.inCartStatus,
-    }));
+  DeleteCartItem = (id) => {
+    let cartItems = [...this.state.cartItems]
+    let index = cartItems.findIndex(item => item.id === id)
+    cartItems[index].inCartStatus = false
+    this.setState({ cartItems })
   };
   render() {
     const { cartItems } = this.state;
@@ -99,12 +100,12 @@ class CartComponent extends Component {
     };
     return (
       <>
-        {cartItems.map((cartItem) => (
+        {cartItems.filter(item => item.inCartStatus === true).map((cartItem) => (
           <div style={divStyle} key={cartItem.id}>
             <img src={cartItem.image} alt="Cart-Product" style={imgStyle} />
             <h5>{cartItem.title}</h5>
             <h4>{cartItem.price}</h4>
-            <button style={btnStyle} onClick={this.DeleteCartItem}>
+            <button style={btnStyle} onClick={() => this.DeleteCartItem(cartItem.id)}>
               Delete
             </button>
           </div>
