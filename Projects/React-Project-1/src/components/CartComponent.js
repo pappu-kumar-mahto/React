@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './CartComponent.css'
 
 class CartComponent extends Component {
   constructor(props) {
@@ -75,42 +76,34 @@ class CartComponent extends Component {
   };
   render() {
     const { cartItems } = this.state;
-    let imgStyle = {
-      border: "1px solid black",
-      height: "150px",
-      width: "150px",
-      padding: "5px 10px",
-      borderRadius: "5px",
-    };
-    let divStyle = {
-      display: "block",
-      padding: "10px",
-      margin: "2px",
-      border: "1px solid black",
-      borderRadius: "5px",
-    };
-    let btnStyle = {
-      width: "80px",
-      height: "20px",
-      border: "none",
-      borderRadius: "5px",
-      background: "red",
-      fontWeight: "600",
-      cursor: "pointer",
-    };
     return (
-      <>
-        {cartItems.filter(item => item.inCartStatus === true).map((cartItem) => (
-          <div style={divStyle} key={cartItem.id}>
-            <img src={cartItem.image} alt="Cart-Product" style={imgStyle} />
-            <h5>{cartItem.title}</h5>
-            <h4>{cartItem.price}</h4>
-            <button style={btnStyle} onClick={() => this.DeleteCartItem(cartItem.id)}>
-              Delete
-            </button>
-          </div>
-        ))}
-      </>
+      <div className="cart-outer">
+        <h1>
+          Cart Items (
+          {cartItems.filter((cartItem) => cartItem.inCartStatus.length)})
+        </h1>
+        {cartItems
+          .filter((item) => item.inCartStatus === true)
+          .map((cartItem) => (
+            <div className="cart-item" key={cartItem.id}>
+              <img
+                src={cartItem.image}
+                alt="Cart-Product"
+                className="cart-item-image"
+              />
+              <div className="cart-item-details">
+                <h4>{cartItem.title}</h4>
+                <h4>{cartItem.price}</h4>
+                <button
+                  className="remove-from-cart-btn"
+                  onClick={() => this.DeleteCartItem(cartItem.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+      </div>
     );
   }
 }

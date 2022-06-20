@@ -1,9 +1,9 @@
 import './App.css';
-import ParentComponent from './components/ParentComponent'
+import CartComponent from './components/CartComponent'
 function App() {
   return (
     <div className="App">
-      <ParentComponent/>
+      <CartComponent/>
     </div>
   );
 }
