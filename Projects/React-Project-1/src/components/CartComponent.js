@@ -80,7 +80,7 @@ class CartComponent extends Component {
       <div className="cart-outer">
         <h1>
           Cart Items (
-          {cartItems.filter((cartItem) => cartItem.inCartStatus.length)})
+          {cartItems.filter(cartItem => cartItem.inCartStatus).length})
         </h1>
         {cartItems
           .filter((item) => item.inCartStatus === true)
