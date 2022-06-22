@@ -13,6 +13,7 @@ import {
 
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteOutline, MdOutlineAddBox } from "react-icons/md";
+import {AiOutlineCheckCircle }from "react-icons/ai"
 
 class ToDo extends Component {
   constructor(props) {
@@ -20,18 +21,13 @@ class ToDo extends Component {
 
     this.state = {
       newToDo: "",
-      todoList: [
-        "Revise Async Await",
-        "Revise React component and props",
-        "Practice questions on array methods",
-        "Practice more JS projects",
-      ],
+      todoList: [],
       isEditing: false,
       editingIndex: ''
     };
   }
 //Add or Update ToDo
-  addOrUpdateTodo() {
+  addOrUpdateTodo= () => {
     const {newToDo, isEditing, editingIndex } = this.state
     
     if (newToDo) {
@@ -42,7 +38,8 @@ class ToDo extends Component {
               todo = newToDo;
             return todo
           }),
-          newToDo:''
+          newToDo: '',
+          isEditing: false
         }))
       } else {
         this.setState((prevState) => ({
@@ -66,12 +63,11 @@ class ToDo extends Component {
   deleteToDo=(inputIndex) => {
     this.setState((prevState) => ({
       todoList: prevState.todoList.filter(
-        (todo, index) => index !== inputIndex
-      ),
+        (todo, index) => index !== inputIndex),
     }));
   }
   render() {
-    let { newToDo, todoList } = this.state;
+    const { newToDo, todoList, isEditing } = this.state;
     return (
       <Container style={{ margin: "20px auto" }}>
         <Col md={{ span: 4, offset: 4 }}>
@@ -90,16 +86,9 @@ class ToDo extends Component {
             <Button
               variant="outline-dark"
               id="button-addon2"
-              //only add btn works when the input box is not empty.
-              onClick={() =>
-                newToDo &&
-                this.setState((prevState) => ({
-                  todoList: [...prevState.todoList, newToDo],
-                  newToDo: "", //to make the input box empty again
-                }))
-              }
+              onClick={this.addOrUpdateTodo}
             >
-              <MdOutlineAddBox />
+              {isEditing? <AiOutlineCheckCircle/>:<MdOutlineAddBox />}
             </Button>
           </InputGroup>
           <ListGroup className="to-do-list">
