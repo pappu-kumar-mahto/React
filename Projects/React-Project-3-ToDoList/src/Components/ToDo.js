@@ -69,56 +69,59 @@ class ToDo extends Component {
   render() {
     const { newToDo, todoList, isEditing } = this.state;
     return (
-      <Container style={{ margin: "20px auto" }}>
-        <Col md={{ span: 4, offset: 4 }}>
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="Enter
+      <>
+      <div className="bg bg2 bg3">
+      </div>
+        <Container style={{ margin: "20px auto" }}>
+          <Col md={{ span: 4, offset: 4 }}>
+            <InputGroup className="mb-3">
+              <Form.Control
+                placeholder="Enter
               ToDo"
-              size="lg"
-              type="text"
-              id="toDoInput"
-              value={newToDo}
-              onChange={(event) =>
-                this.setState({ newToDo: event.target.value })
-              }
-            />
-            <Button
-              variant="outline-dark"
-              id="button-addon2"
-              onClick={this.addOrUpdateTodo}
-            >
-              {isEditing? <AiOutlineCheckCircle/>:<MdOutlineAddBox />}
-            </Button>
-          </InputGroup>
-          <ListGroup className="to-do-list">
-            {todoList.map((todo, index) => (
-              <ListGroup.Item className="to-do-list" key={index}>
-                <Row>
-                  <Col md={9}>{todo}</Col>
-                  <Col md={3} className="action-btns">
-                    <Button
-                      variant="warning"
-                      size="sm"
-                      onClick={() => this.editToDo(index)}
-                      
-                    >
-                      <FaEdit />
-                    </Button>
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      onClick={() => this.deleteToDo(index)}
-                    >
-                      <MdDeleteOutline />
-                    </Button>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </Col>
-      </Container>
+                size="lg"
+                type="text"
+                id="toDoInput"
+                value={newToDo}
+                onChange={(event) =>
+                  this.setState({ newToDo: event.target.value })
+                }
+              />
+              <Button
+                variant="outline-dark"
+                id="button-addon2"
+                onClick={this.addOrUpdateTodo}
+              >
+                {isEditing ? <AiOutlineCheckCircle /> : <MdOutlineAddBox />}
+              </Button>
+            </InputGroup>
+            <ListGroup className="to-do-list">
+              {todoList.map((todo, index) => (
+                <ListGroup.Item className="to-do-list" key={index}>
+                  <Row>
+                    <Col md={9}>{todo}</Col>
+                    <Col md={3} className="action-btns">
+                      <Button
+                        variant="warning"
+                        size="sm"
+                        onClick={() => this.editToDo(index)}
+                      >
+                        <FaEdit />
+                      </Button>
+                      <Button
+                        variant="danger"
+                        size="sm"
+                        onClick={() => this.deleteToDo(index)}
+                      >
+                        <MdDeleteOutline />
+                      </Button>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </Col>
+        </Container>
+      </>
     );
   }
 }
