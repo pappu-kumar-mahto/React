@@ -19,20 +19,57 @@ class ToDo extends Component {
     super(props);
 
     this.state = {
-      newToDo:'',
+      newToDo: "",
       todoList: [
         "Revise Async Await",
         "Revise React component and props",
         "Practice questions on array methods",
         "Practice more JS projects",
       ],
+      isEditing: false,
+      editingIndex: ''
     };
   }
-
-  emptyInputField = () => {
-    document.getElementById('toDoInput').value = ''
+//Add or Update ToDo
+  addOrUpdateTodo() {
+    const {newToDo, isEditing, editingIndex } = this.state
+    
+    if (newToDo) {
+      if (isEditing) {
+        this.setState((prevState) => ({
+          todoList: prevState.todoList.map((todo, index) => {
+            if (index === editingIndex)
+              todo = newToDo;
+            return todo
+          }),
+          newToDo:''
+        }))
+      } else {
+        this.setState((prevState) => ({
+          todoList: [...prevState.todoList, newToDo],
+          newToDo: ''
+        }))
+      }
+    }
   }
 
+  //Edit the ToDo of the list.
+  editToDo = (inputIndex) => {
+    this.setState((prevState) => ({
+      newToDo: prevState.todoList[inputIndex],
+      isEditing: true,
+      editingIndex: inputIndex
+    }))
+  }
+
+  //Delete the ToDo from the list as well from the memory.
+  deleteToDo=(inputIndex) => {
+    this.setState((prevState) => ({
+      todoList: prevState.todoList.filter(
+        (todo, index) => index !== inputIndex
+      ),
+    }));
+  }
   render() {
     let { newToDo, todoList } = this.state;
     return (
@@ -41,18 +78,27 @@ class ToDo extends Component {
           <InputGroup className="mb-3">
             <Form.Control
               placeholder="Enter
-              ToDo" size="lg"
+              ToDo"
+              size="lg"
               type="text"
               id="toDoInput"
               value={newToDo}
-              onChange={(event) => this.setState({newToDo: event.target.value})}
+              onChange={(event) =>
+                this.setState({ newToDo: event.target.value })
+              }
             />
-            <Button variant="outline-dark" id="button-addon2"
-              onClick={() => 
-              this.setState((prevState) => ({
-              todoList:[...prevState.todoList, newToDo],
-              }))
-              }> 
+            <Button
+              variant="outline-dark"
+              id="button-addon2"
+              //only add btn works when the input box is not empty.
+              onClick={() =>
+                newToDo &&
+                this.setState((prevState) => ({
+                  todoList: [...prevState.todoList, newToDo],
+                  newToDo: "", //to make the input box empty again
+                }))
+              }
+            >
               <MdOutlineAddBox />
             </Button>
           </InputGroup>
@@ -62,10 +108,19 @@ class ToDo extends Component {
                 <Row>
                   <Col md={9}>{todo}</Col>
                   <Col md={3} className="action-btns">
-                    <Button variant="warning" size="sm">
+                    <Button
+                      variant="warning"
+                      size="sm"
+                      onClick={() => this.editToDo(index)}
+                      
+                    >
                       <FaEdit />
                     </Button>
-                    <Button variant="danger" size="sm">
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      onClick={() => this.deleteToDo(index)}
+                    >
                       <MdDeleteOutline />
                     </Button>
                   </Col>
@@ -79,4 +134,3 @@ class ToDo extends Component {
   }
 }
 export default ToDo;
-
