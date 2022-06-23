@@ -12,8 +12,8 @@ import {
 } from "react-bootstrap";
 
 import { FaEdit } from "react-icons/fa";
-import { MdDeleteOutline, MdOutlineAddBox } from "react-icons/md";
-import {AiOutlineCheckCircle }from "react-icons/ai"
+import { MdDeleteOutline, MdOutlineAddBox, MdOutlineAddTask } from "react-icons/md";
+import { IoCheckmarkDoneSharp } from "react-icons/io5"
 
 class ToDo extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class ToDo extends Component {
       newToDo: "",
       todoList: [],
       isEditing: false,
-      editingIndex: ''
+      editingIndex: '',
     };
   }
 //Add or Update ToDo
@@ -35,15 +35,16 @@ class ToDo extends Component {
         this.setState((prevState) => ({
           todoList: prevState.todoList.map((todo, index) => {
             if (index === editingIndex)
-              todo = newToDo;
+              todo.text = newToDo;
             return todo
           }),
           newToDo: '',
-          isEditing: false
+          isEditing: false,
+          editingIndex:''
         }))
       } else {
         this.setState((prevState) => ({
-          todoList: [...prevState.todoList, newToDo],
+          todoList: [...prevState.todoList, {text: newToDo, completed:false }],
           newToDo: ''
         }))
       }
@@ -53,7 +54,7 @@ class ToDo extends Component {
   //Edit the ToDo of the list.
   editToDo = (inputIndex) => {
     this.setState((prevState) => ({
-      newToDo: prevState.todoList[inputIndex],
+      newToDo: prevState.todoList[inputIndex].text,
       isEditing: true,
       editingIndex: inputIndex
     }))
@@ -65,6 +66,16 @@ class ToDo extends Component {
       todoList: prevState.todoList.filter(
         (todo, index) => index !== inputIndex),
     }));
+  }
+
+  toDoComplete = (inputIndex) => {
+    this.setState((prevState) => ({
+      todoList: prevState.todoList.map((todo, index) => {
+        if (index === inputIndex)
+         todo.completed = true;
+        return todo
+      })
+    }))
   }
   render() {
     const { newToDo, todoList, isEditing } = this.state;
@@ -91,18 +102,19 @@ class ToDo extends Component {
                 id="button-addon2"
                 onClick={this.addOrUpdateTodo}
               >
-                {isEditing ? <AiOutlineCheckCircle /> : <MdOutlineAddBox />}
+                {isEditing ? <MdOutlineAddTask /> : <MdOutlineAddBox />}
               </Button>
             </InputGroup>
             <ListGroup className="to-do-list">
               {todoList.map((todo, index) => (
                 <ListGroup.Item className="to-do-list" key={index}>
                   <Row>
-                    <Col md={9}>{todo}</Col>
-                    <Col md={3} className="action-btns">
+                    <Col xs={9} className = {todo.completed && 'completed'}>{todo.text}</Col>
+                    <Col xs={3} className="action-btns">
                       <Button
                         variant="warning"
                         size="sm"
+                        className = {todo.completed && 'disabled'}
                         onClick={() => this.editToDo(index)}
                       >
                         <FaEdit />
@@ -111,8 +123,16 @@ class ToDo extends Component {
                         variant="danger"
                         size="sm"
                         onClick={() => this.deleteToDo(index)}
-                      >
+                        >
                         <MdDeleteOutline />
+                      </Button>
+                      <Button
+                        variant="success"
+                        size="sm"
+                        className = {todo.completed && 'disabled'}
+                        onClick={() => this.toDoComplete(index)}
+                      >
+                        <IoCheckmarkDoneSharp />
                       </Button>
                     </Col>
                   </Row>

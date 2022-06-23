@@ -28,4 +28,12 @@
 .action-btns{
     display:flex;
     justify-content: space-around;
+    padding:0;
+}
+.action-btns .btn{
+  border-radius: 20px;
+}
+
+.completed{
+  text-decoration: line-through;
 }
