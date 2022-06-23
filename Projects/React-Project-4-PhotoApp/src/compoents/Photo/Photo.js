@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
 import "./Photo.css";
 
 const PhotoApp = () => {
@@ -20,17 +20,21 @@ const PhotoApp = () => {
   return (
     <Container>
       <Row>
-        {photos.map((photo) => (
+        {photos.length ? (photos.map((photo) => (
           <Col key={photo.id} md={3} className="single-photo">
             <Card>
               <Card.Header>{photo.author}</Card.Header>
-              <Card.Img variant="top" src={photo.download_url} />
+              <Card.Img variant="top" src={photo.download_url} className="photo-img"/>
               <Card.Body>
-                <Button variant="primary">View Source</Button>
+                <a className="btn btn-dark" href={ photo.url }>View Source</a>
               </Card.Body>
             </Card>
           </Col>
-        ))}
+        ))) :<div className="spinner-wrapper">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div> }  
       </Row>
     </Container>
   );

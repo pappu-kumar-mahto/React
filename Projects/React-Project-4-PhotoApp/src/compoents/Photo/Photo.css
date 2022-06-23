@@ -1,3 +1,10 @@
 .single-photo{
-    margin: 20px auto
+    margin: 20px 0
+}
+.photo-img{
+    height:220px
+}
+
+.spinner-wrapper{
+    margin: 20px 0;
 }
