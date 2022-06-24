@@ -8,3 +8,8 @@
 .spinner-wrapper{
     margin: 20px 0;
 }
+
+.btn-wrapper{
+    display: flex;
+    justify-content: space-around;
+}

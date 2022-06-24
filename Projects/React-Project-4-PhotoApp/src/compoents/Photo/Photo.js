@@ -25,15 +25,16 @@ const PhotoApp = () => {
             <Card>
               <Card.Header>{photo.author}</Card.Header>
               <Card.Img variant="top" src={photo.download_url} className="photo-img"/>
-              <Card.Body>
+              <Card.Body className='btn-wrapper'>
+
                 <a className="btn btn-dark" href={ photo.url }>View Source</a>
+                <a className="btn btn-dark" >Enlarge Photo</a>
+
               </Card.Body>
             </Card>
           </Col>
         ))) :<div className="spinner-wrapper">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
+        <Spinner animation="border" role="status"></Spinner>
       </div> }  
       </Row>
     </Container>
