@@ -16,5 +16,12 @@
     justify-content: space-around;
 }
 .post-header{
+    display: flex;
+    justify-content: space-between;
     text-align: left;
+    font-size: 16px;
+}
+.post-time{
+    margin-bottom: 0;
+    opacity: 0.6;
 }

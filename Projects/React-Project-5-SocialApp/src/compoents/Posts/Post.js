@@ -5,6 +5,8 @@ import { FcLike } from 'react-icons/fc'
 import { FaRegCommentDots } from 'react-icons/fa'
 import {TbUserCircle} from 'react-icons/tb'
 import "./Post.css";
+import RandomPostInfo from '../../assests/randomPostInfo.json'
+import RandomPostUpdateTime from '../../assests/randomPostUploadTime.json'
 
 const SocialApp = () => {
   const [photos, setPhotos] = useState([]);
@@ -31,7 +33,7 @@ const SocialApp = () => {
                   <div>
                   <TbUserCircle />{photo.author}
                   </div>
-                  <p className='lead'></p>
+                  <p className='post-time'>{ RandomPostUpdateTime[Math.ceil(Math.random() *10)] }</p>
                 </Card.Header>
                 <Card.Img
                   variant="top"
@@ -39,6 +41,7 @@ const SocialApp = () => {
                   className="photo-img"
                 />
                 <Card.Body>
+                  <p className='lead'>{ RandomPostInfo[Math.ceil(Math.random() *8)]}</p>
                   <Col md={{ span: 8, offset: 5 }} className="action-btn-outer">
                     <Button variant="light">
                       <FcLike />{" "}
@@ -59,9 +62,7 @@ const SocialApp = () => {
           ))
         ) : (
           <div className="spinner-wrapper">
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
+            <Spinner animation="border" role="status"></Spinner>
           </div>
         )}
       </Row>
