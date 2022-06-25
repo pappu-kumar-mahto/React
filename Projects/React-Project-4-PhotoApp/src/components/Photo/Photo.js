@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Row, Col, Card, Button, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import "./Photo.css";
+import {NavLink} from 'react-router-dom'
 
 const PhotoApp = () => {
   const [photos, setPhotos] = useState([]);
@@ -27,9 +28,8 @@ const PhotoApp = () => {
               <Card.Img variant="top" src={photo.download_url} className="photo-img"/>
               <Card.Body className='btn-wrapper'>
 
-                <a className="btn btn-dark" href={ photo.url }>View Source</a>
-                <a className="btn btn-dark" >Enlarge Photo</a>
-
+                <a className="btn btn-dark" href={photo.url}>View Source</a>
+                <NavLink to='/photo/:id'>Enlarge Photo</NavLink>
               </Card.Body>
             </Card>
           </Col>

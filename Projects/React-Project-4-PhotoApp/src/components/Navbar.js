@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { NavLink } from 'react-router-dom'
 import photoLogo from "../assests/PhotoLogo.png";
 const NavbarComponent = () => {
   return (
@@ -12,14 +13,14 @@ const NavbarComponent = () => {
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />
-          React-Bootstrap
+          PhotoApp
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Photos</Nav.Link>
-            <Nav.Link href="#pricing">About Us</Nav.Link>
-            <Nav.Link href="#pricing">Contact Us</Nav.Link>
+            <Nav.Link as ={NavLink} to ='/' >Photos</Nav.Link>
+            <Nav.Link as ={NavLink} to ='/about'>About Us</Nav.Link> {/* 'to' value should match with 'path' prop of parent component.*/}
+            <Nav.Link as ={NavLink} to ='/contact'>Contact Us</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="#deets">Sign Up</Nav.Link>
