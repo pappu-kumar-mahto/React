@@ -9,6 +9,7 @@ import RandomPostInfo from "../../assests/randomPostInfo.json";
 import RandomPostUpdateTime from "../../assests/randomPostUploadTime.json";
 import Posts from './Posts'
 import ActiveMemberList from './ActiveMemberList'
+import ChatList from './ChatList'
 
 const SocialApp = () => {
   const [posts, setPost] = useState([]);
@@ -41,11 +42,13 @@ const SocialApp = () => {
     getPost();
   }, []);
 
+  let randomPostList = posts.filter(post => Number(post.id)%2 !== 0)
   return (
     <Container className="post-container">
       <Row>
         <ActiveMemberList posts={posts} />
         <Posts posts={posts} setPost={setPost} />
+        <ChatList posts={randomPostList}/>
       </Row>
     </Container>
   );
