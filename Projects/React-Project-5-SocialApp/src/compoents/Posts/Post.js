@@ -63,6 +63,16 @@ const SocialApp = () => {
     setPost(updatedPost);
   };
 
+  const incrementCommentCount = (postId) => {
+    let updatedPost = posts.map((post) => {
+      if (post.id === postId) {
+        post.commentCount = post.commentCount + 1;
+      }
+      return post
+    })
+    setPost(updatedPost)
+  }
+
   return (
     <Container className="post-container">
       <Row>
@@ -94,7 +104,10 @@ const SocialApp = () => {
                         {post.likeCount}
                       </Badge>{" "}
                     </Button>
-                    <Button variant="light">
+                    <Button
+                      variant="light"
+                      onClick={() => incrementCommentCount(post.id)}
+                    >
                       <FaRegCommentDots />{" "}
                       <Badge pill bg="dark">
                         {post.commentCount}

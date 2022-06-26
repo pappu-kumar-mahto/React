@@ -16,6 +16,7 @@
 }
 .action-btn-outer .btn{
     margin-left: 10px;
+    background: none;
 }
 .post-header{
     display: flex;
