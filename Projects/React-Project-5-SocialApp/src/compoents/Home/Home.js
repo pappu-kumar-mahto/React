@@ -44,8 +44,8 @@ const SocialApp = () => {
   return (
     <Container className="post-container">
       <Row>
-        <ActiveMemberList/>
-      <Posts posts={posts} setPost={ setPost} />
+        <ActiveMemberList posts={posts} />
+        <Posts posts={posts} setPost={setPost} />
       </Row>
     </Container>
   );

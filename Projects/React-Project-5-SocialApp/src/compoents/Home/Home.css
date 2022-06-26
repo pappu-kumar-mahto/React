@@ -1,5 +1,5 @@
-.single-photo{
-    margin: 20px 0
+.single-post{
+    margin-bottom: 20px;
 }
 .photo-img{
     height:220px
@@ -8,9 +8,9 @@
 .spinner-wrapper{
     margin: 20px 0;
 }
-/* .post-container{
-    width: 400px;
-} */
+.post-container{
+    margin-top: 20px;
+}
 .action-btn-outer{
     text-align: right;;
 }
@@ -27,4 +27,8 @@
 .post-time{
     margin-bottom: 0;
     opacity: 0.6;
+}
+
+.active-member-list{
+    text-align: left;
 }
