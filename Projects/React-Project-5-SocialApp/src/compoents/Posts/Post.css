@@ -12,8 +12,10 @@
     width: 400px;
 }
 .action-btn-outer{
-    display: flex;
-    justify-content: space-around;
+    text-align: right;;
+}
+.action-btn-outer .btn{
+    margin-left: 10px;
 }
 .post-header{
     display: flex;
