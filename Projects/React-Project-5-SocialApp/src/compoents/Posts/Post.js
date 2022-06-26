@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col, Card, Button, Spinner,Badge } from "react-bootstrap";
-import { FcLike } from 'react-icons/fc'
+import { FcLike, FcLikePlaceholder } from 'react-icons/fc'
 import { FaRegCommentDots } from 'react-icons/fa'
 import {TbUserCircle} from 'react-icons/tb'
 import "./Post.css";
@@ -14,9 +14,26 @@ const SocialApp = () => {
     const getPost = async () => {
       try {
         const res = await axios.get("https://picsum.photos/v2/list");
-        setPost(res.data);
+        let postRes = [...res.data]
+        let postWithAdditionalDetails = postRes.map((post) => {
+          let likeCount = Math.ceil(Math.random() *1000)
+          let commentCount = Math.ceil(Math.random() * 100)
+          let text = RandomPostInfo[Math.ceil(Math.random() * 8)]
+          let time = RandomPostUpdateTime[Math.ceil(Math.random() * 10)]
+          let isLiked = false
+
+          return {
+            ...post,
+            likeCount,
+            commentCount,
+            text,
+            time,
+            isLiked
+          }
+        })
+        setPost(postWithAdditionalDetails);
       } catch (err) {
-        console.log(err);
+        alert(err);
       }
     };
     getPost();
@@ -33,7 +50,7 @@ const SocialApp = () => {
                   <div>
                   <TbUserCircle />{post.author}
                   </div>
-                  <p className='post-time'>{ RandomPostUpdateTime[Math.ceil(Math.random() *10)] }</p>
+                  <p className='post-time'>{ post.time }</p>
                 </Card.Header>
                 <Card.Img
                   variant="top"
@@ -41,18 +58,18 @@ const SocialApp = () => {
                   className="photo-img"
                 />
                 <Card.Body>
-                  <p className='lead'>{ RandomPostInfo[Math.ceil(Math.random() *8)]}</p>
+                  <p className='lead'>{ post.text}</p>
                   <Col md={{ span: 8, offset: 5 }} className="action-btn-outer">
                     <Button variant="light">
-                      <FcLike />{" "}
+                      <FcLikePlaceholder />{" "}
                       <Badge pill bg="dark">
-                        351
+                        { post.likeCount }
                       </Badge>{" "}
                     </Button>
                     <Button variant="light">
                       <FaRegCommentDots />{" "}
                       <Badge pill bg="dark">
-                        53
+                        { post.commentCount}
                       </Badge>
                     </Button>
                   </Col>
