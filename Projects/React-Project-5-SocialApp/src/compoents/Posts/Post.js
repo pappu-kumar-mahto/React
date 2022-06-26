@@ -9,35 +9,35 @@ import RandomPostInfo from '../../assests/randomPostInfo.json'
 import RandomPostUpdateTime from '../../assests/randomPostUploadTime.json'
 
 const SocialApp = () => {
-  const [photos, setPhotos] = useState([]);
+  const [posts, setPost] = useState([]);
   useEffect(() => {
-    const getPhotos = async () => {
+    const getPost = async () => {
       try {
         const res = await axios.get("https://picsum.photos/v2/list");
-        setPhotos(res.data);
+        setPost(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    getPhotos();
+    getPost();
   }, []);
 
   return (
     <Container className="post-container">
       <Row>
-        {photos.length ? (
-          photos.map((photo) => (
-            <Col key={photo.id} md={12} className="single-photo">
+        {posts.length ? (
+          posts.map((post) => (
+            <Col key={post.id} md={12} className="single-post">
               <Card>
                 <Card.Header className="post-header">
                   <div>
-                  <TbUserCircle />{photo.author}
+                  <TbUserCircle />{post.author}
                   </div>
                   <p className='post-time'>{ RandomPostUpdateTime[Math.ceil(Math.random() *10)] }</p>
                 </Card.Header>
                 <Card.Img
                   variant="top"
-                  src={photo.download_url}
+                  src={post.download_url}
                   className="photo-img"
                 />
                 <Card.Body>
