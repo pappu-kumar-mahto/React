@@ -17,10 +17,10 @@ const ChatList = ({ posts }) => {
                     <TbUserCircle />
                     {post.author}
                         </div>
-                        {randomChatList[Math.ceil(Math.random()*7)]}
+                        {randomChatList[Math.ceil(Math.random()*7)].message}
                 </div>
                 <Badge bg="primary" pill>
-                  {Math.ceil(Math.random()*5)}
+                  {randomChatList[Math.ceil(Math.random()*7)].messageCount}
                 </Badge>
               </ListGroup.Item>
             ))}

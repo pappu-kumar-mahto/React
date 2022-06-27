@@ -1,9 +1,33 @@
 {
-    "1": "Hi! How are you?",
-    "2": "Its been a long time, lets catch up someday.",
-    "3": "Just landed! Seen you in the hotel.",
-    "4": "Such a busy day! feeling exhausted!",
-    "5": "Raining outside, I think we need to re-schedule our plan.",
-    "6": "I'm happy you got the job, Best of luck!",
-    "7": "The restraunt we went last time had very nice ambient."
+    "1": {
+        "message" : "Hi! How are you?",
+        "messageCount": 1
+    },
+    "2": {
+        "message" : "Its been a long time, lets catch up someday.",
+        "messageCount": 6
+    },
+    "3": {
+        "message" :  "Just landed! See you in the hotel.",
+        "messageCount": 2
+    },
+   
+    "4": {
+        "message" :  "Such a busy day! feeling exhausted!",
+        "messageCount": 7
+    }, 
+    
+    "5":{
+        "message" :  "Raining outside, I think we need to re-schedule our plan.",
+        "messageCount": 3
+    }, 
+    
+    "6": {
+        "message" : "I'm happy you got the job, Best of luck!",
+        "messageCount": 5
+    },
+    "7": {
+        "message" : "The restraunt we went last time had very nice ambient.",
+        "messageCount": 4
+    }
 }
