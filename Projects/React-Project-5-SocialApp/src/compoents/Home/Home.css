@@ -29,6 +29,6 @@
     opacity: 0.6;
 }
 
-.active-member-list{
-    text-align: left;
+.active-member-list.inActive{
+    opacity: 0.7;
 }
