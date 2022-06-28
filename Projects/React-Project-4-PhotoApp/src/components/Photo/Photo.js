@@ -12,7 +12,7 @@ const PhotoApp = () => {
         const res = await axios.get("https://picsum.photos/v2/list");
         setPhotos(res.data);
       } catch (err) {
-        console.log(err);
+        alert(err);
       }
     };
     getPhotos();
@@ -29,7 +29,7 @@ const PhotoApp = () => {
               <Card.Body className='btn-wrapper'>
 
                 <a className="btn btn-dark" href={photo.url}>View Source</a>
-                <Link className="btn btn-dark" to='/photo/:id'>Enlarge Photo</Link>
+                <Link className="btn btn-dark" to={`/photos/${photo.id }`}>Enlarge Photo</Link>
               </Card.Body>
             </Card>
           </Col>
