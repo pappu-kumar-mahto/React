@@ -4,7 +4,7 @@ import SocialImg from "../assests/social-img.jpg";
 const NavbarComponent = () => {
   let socialImage = {
     width: '30px',
-    heght: '30px',
+    height: '30px',
     borderRadius: '50%',
     marginRight: '10px'
   }
