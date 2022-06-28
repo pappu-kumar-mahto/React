@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
 import "./Photo.css";
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const PhotoApp = () => {
   const [photos, setPhotos] = useState([]);
@@ -29,7 +29,7 @@ const PhotoApp = () => {
               <Card.Body className='btn-wrapper'>
 
                 <a className="btn btn-dark" href={photo.url}>View Source</a>
-                <NavLink to='/photo/:id'>Enlarge Photo</NavLink>
+                <Link className="btn btn-dark" to='/photo/:id'>Enlarge Photo</Link>
               </Card.Body>
             </Card>
           </Col>
