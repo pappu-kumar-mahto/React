@@ -1,5 +1,6 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import './NewsList.css'
+import {Link} from 'react-router-dom'
 const NewsList = ({ newsList }) => {
   return (
     <Container>
@@ -28,7 +29,7 @@ const NewsList = ({ newsList }) => {
                       ? `${singleNews.description.slice(0, 180)}...`
                       : singleNews.description}
                   </Card.Text>
-                  <Button variant="dark">Read More</Button>
+                  <Link className='btn btn-dark' to={`news/${index}`}>Read More</Link>
                 </Card.Body>
               </Card>
             </Col>
