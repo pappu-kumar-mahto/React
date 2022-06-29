@@ -1,4 +1,5 @@
-const { createStore } = require("redux");
+const { createStore, applyMiddleware } = require("redux");
+const { createLogger} = require('redux-logger')
 
 const INCREMENT_COUNTER = "INCREMENT_COUNTER";
 const DECREMENT_COUNTER = "DECREMENT_COUNTER";
@@ -31,13 +32,13 @@ const reducerFunction = (state = initialState, action) => {
   }
 };
 
-const store = createStore(reducerFunction)
+const store = createStore(reducerFunction, applyMiddleware(createLogger()))
 // store.subscribe(() => { })
 const unsubscribe = store.subscribe(() => { })
 
 store.dispatch(incrementCounter(7))
-console.log(store.getState())
+// console.log(store.getState())
 store.dispatch(decrementCounter())
-console.log(store.getState())
+// console.log(store.getState())
 
 unsubscribe()
