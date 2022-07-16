@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { incrementCounter, decrementCounter } from "../redux/count/action";
 
 const Counter = () => {
-    const count = useSelector((state) => state.count)
+    const count = useSelector((state) => state.counter.count)
     const dispatch = useDispatch()
   return (
     <div className="text-center">

@@ -12,3 +12,10 @@
 .single-news .card-text{
     height: 90px;
 }
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}

@@ -1,8 +1,10 @@
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { useParams } from 'react-router-dom'
 import './NewsList/NewsList.css'
-const SingleNews = ({ newsList }) => {
-    const { id } = useParams()
+import { useSelector } from "react-redux";
+const SingleNews = () => {
+  const { id } = useParams()
+  const newsList = useSelector(state=>state.news.newsList)
     let singleNews = newsList && id && newsList[id]
   return (
     <Container>
