@@ -1,6 +1,6 @@
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./action.js"
 let initialState = {
-    count: 5
+    count: 0
 }
 
 export const countReducer = (state= initialState, action) => {
