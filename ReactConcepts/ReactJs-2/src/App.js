@@ -4,13 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import CounterComponent from "./components/Counter/CounterComponent"
 // import RenderingUsingLoops from "./components/RenderingUsingLoops"
 // import BulbOnOff from "./components/toggle/bulbOnOff"
-import BootstrapBasics from './components/BootstrapBasics';
+// import Counter from './components/Counter/CounterUsingHooks'
+import BulbOnOffUsingHooks from "./components/toggle/bulbOnOffUsingHoks"
+// import BootstrapBasics from './components/BootstrapBasics';
 function App() {
   return (
     <div className="App">
       {/*  <RenderingUsingLoops/>
       <BulbOnOff/> */}
-      <BootstrapBasics/>
+      <BulbOnOffUsingHooks/>
     </div>
   )
 }
