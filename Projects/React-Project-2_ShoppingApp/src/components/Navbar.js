@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Navbar as BootstrapNavbar, Nav } from "react-bootstrap";
+import {NavLink} from 'react-router-dom'
 class Navbar extends Component {
     render() {
         return (
@@ -24,12 +25,13 @@ class Navbar extends Component {
               <BootstrapNavbar.Toggle aria-controls="responsive-navbar-nav" />
               <BootstrapNavbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="#features">Home</Nav.Link>
-                  <Nav.Link href="#pricing">About Us</Nav.Link>
+                  <Nav.Link as= {NavLink} to='/'>Home</Nav.Link>
+                  <Nav.Link as= {NavLink} to='/about'>About Us</Nav.Link>
+                  <Nav.Link as= {NavLink} to='/contact'>Contact Us</Nav.Link>
                 </Nav>
                 <Nav>
-                  <Nav.Link href="#deets">Sign-Up</Nav.Link>
-                  <Nav.Link eventKey={2} href="#memes">
+                  <Nav.Link as= {NavLink} to='/signup'>Sign-Up</Nav.Link>
+                  <Nav.Link as= {NavLink} to='/login'>
                     Login
                   </Nav.Link>
                 </Nav>
