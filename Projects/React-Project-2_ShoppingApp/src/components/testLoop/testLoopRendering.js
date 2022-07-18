@@ -49,7 +49,7 @@ const LoopRender = () => {
     {
       id: 5,
       nameVal: "phoneNumber",
-      type: "number",
+      type: "text",
       placeholder: "Phone Number",
       errorMessage: "",
       label: "PhoneNumber",
