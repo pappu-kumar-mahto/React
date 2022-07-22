@@ -9,6 +9,7 @@ const LoopRender = () => {
     password: "",
     phoneNumber: "",
   });
+  // let [isError, setIsError]= useState(false)
   const onChangeEvent = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -27,7 +28,7 @@ const LoopRender = () => {
       nameVal: "lastName",
       type: "text",
       placeholder: "Last Name",
-      errorMessage: "",
+      errorMessage: "Please enter valid name.",
       label: "LastName",
     },
     {
@@ -35,7 +36,7 @@ const LoopRender = () => {
       nameVal: "email",
       type: "text",
       placeholder: "Email",
-      errorMessage: "",
+      errorMessage: "Please enter valid name.",
       label: "Email",
     },
     {
@@ -43,7 +44,7 @@ const LoopRender = () => {
       nameVal: "password",
       type: "password",
       placeholder: "Password",
-      errorMessage: "",
+      errorMessage: "Please enter valid name.",
       label: "Password",
     },
     {
@@ -51,16 +52,36 @@ const LoopRender = () => {
       nameVal: "phoneNumber",
       type: "number",
       placeholder: "Phone Number",
-      errorMessage: "",
+      errorMessage: "Please enter valid name.",
       label: "PhoneNumber",
     },
   ];
+  const validate = (e) => {
+        if (!e.target.value) {
+          console.log("inside Case IF part", e.target.value)
+        } else {
+          console.log("inside Case ElsePart", e.target.value)
+       }
+      }
 
   return (
     <div className="signup_wrapper">
       <form>
         <h1>SignUp</h1>
-      {inputValues.map((inputVal, index) => {
+        <div className="form_Input">
+            <label htmlFor="firstName">firstName</label>
+            <input
+              placeholder="firstName"
+            type="text"
+            vlaue="firstName"
+              autoComplete="off"
+              onChange={onChangeEvent}
+              onFocus={validate }
+            />
+            <p className="errorMsg">"Error"</p>
+          </div>
+
+      {/* {inputValues.map((inputVal, index) => {
         return (
           <div key={index} className="form_Input">
             <label htmlFor={inputVal.label}>{inputVal.label}</label>
@@ -70,11 +91,12 @@ const LoopRender = () => {
               value={values[inputVal.name]}
               autoComplete="off"
               onChange={onChangeEvent}
+              onFocus={()=> validate(inputVal.name) }
             />
-            <sapn className="errorMsg">{inputVal.errorMessage}</sapn>
+            <p className="errorMsg">{inputVal.errorMessage}</p>
           </div>
         );
-      })}
+      })} */}
       <button>Submit</button>
     </form>
     </div>
