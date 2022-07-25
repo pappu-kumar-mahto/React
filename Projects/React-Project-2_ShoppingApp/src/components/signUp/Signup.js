@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./signup.css";
 
-const LoopRender = () => {
+const Signup = () => {
   const [values, setValues] = useState({
     firstName: "",
     lastName: "",
@@ -119,6 +119,11 @@ const LoopRender = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
+    
+  }
+
+  const resetForm = () => {
+    console.log({values});
     setValues({firstName: "",
     lastName: "",
     email: "",
@@ -146,12 +151,12 @@ const LoopRender = () => {
           </div>
         );
       })}
-        <button>Submit</button>
+        <button onClick={resetForm}>Submit</button>
       </form>
     </div>
   );
 };
-export default LoopRender;
+export default Signup;
 
 
 //  console.log(Object.keys(isError)[index], isError[Object.keys(isError)[index]])

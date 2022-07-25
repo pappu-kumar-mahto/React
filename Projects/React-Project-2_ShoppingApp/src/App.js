@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from './components/Navbar'
 import Products from './components/Products'
 import SignupForm from './components/signUp/FormUsingHook/signUpForm'
+import Signup from './components/signUp/Signup'
 class App extends Component {
   render() {
     return (
@@ -16,6 +17,7 @@ class App extends Component {
             {/* <Route path="/about" element={<Aboout />}/> */}
             {/* <Route path="/contact" element={<Contact />}/> */}
             <Route path="/signup" element={<SignupForm />}/>
+            <Route path="/signupcontrol" element={<Signup />}/>
           </Routes>
         </div>
       </BrowserRouter>
