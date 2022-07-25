@@ -18,12 +18,21 @@ const NavbarComponent = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as ={NavLink} to ='/' >Photos</Nav.Link>
-            <Nav.Link as ={NavLink} to ='/about'>About Us</Nav.Link> {/* 'to' value should match with 'path' prop of parent component.*/}
-            <Nav.Link as ={NavLink} to ='/contact'>Contact Us</Nav.Link>
+            <Nav.Link as={NavLink} to="/">
+              Photos
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/about">
+              About Us
+            </Nav.Link>{" "}
+            {/* 'to' value should match with 'path' prop of parent component.*/}
+            <Nav.Link as={NavLink} to="/contact">
+              Contact Us
+            </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">Sign Up</Nav.Link>
+            <Nav.Link as={NavLink} to="/signup">
+              Sign Up
+            </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               LogIn
             </Nav.Link>

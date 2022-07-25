@@ -7,6 +7,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import EnlargePhoto from './components/EnlargePhoto'
 import NotFound from './components/NotFound'
+import SignupForm from './components/FormUsingHook/signUpForm'
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={ <PhotoApp />} />  
           <Route path="/about" element={ <About />} />  {/* path name should match with 'to' prop of Navbar component's Nav.Link */} 
           <Route path="/contact" element={<Contact />} /> 
+          <Route path="/signup" element={<SignupForm />} /> 
           <Route path="/photos/:id" element={<EnlargePhoto />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
