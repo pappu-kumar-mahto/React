@@ -1,11 +1,13 @@
-// import React, {useState} from 'react'
+import React, { useState, useEffect } from "react";
+import { Alert } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "./FormusingHook.css";
 const SignupForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful,  },
+    reset,
   } = useForm({
     defaultValues: {
       firstname: "",
@@ -16,10 +18,22 @@ const SignupForm = () => {
     },
   });
 
+  let [users, setUsers] = useState([]);
+
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log(data);
+    setUsers([...users, data]);
   };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+      console.log(users);
+      setTimeout(() => {
+        alert("Signup successful")
+      }, 800);
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <>
