@@ -10,11 +10,11 @@ const LoopRender = () => {
     phoneNumber: "",
   });
   let [isError, setIsError] = useState({
-    firstNameError: false,
-    lastNameError: false,
-    emailError: false,
-    passwordError: false,
-    phoneNumberError: false,
+    firstNameError: true,
+    lastNameError: true,
+    emailError: true,
+    passwordError: true,
+    phoneNumberError: true,
   });
   const onChangeEvent = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -50,7 +50,7 @@ const LoopRender = () => {
       nameVal: "password",
       type: "password",
       placeholder: "Password",
-      errorMessage: "Please enter valid password.",
+      errorMessage: "Password must contain at least one number, one special, one lower/upper character and length must be more than 6.",
       label: "Password",
     },
     {
@@ -63,27 +63,20 @@ const LoopRender = () => {
     },
   ];
   const validate =(id)=> (e) => {
-    // if (!e.target.value) {
-    //   setIsError((isError = true));
- 
-    // } else {
-    //   setIsError(isError = false);
-    //   console.log(id);
-    // }
     switch (id) {
       case 0: {
-        if (!e.target.value || e.target.value.length>2) {
-          setIsError({...isError,firstNameError:true});
+        if (!e.target.value || e.target.value.length < 2) {
+          setIsError({...isError,firstNameError:false});
         } else {
-          setIsError({...isError,firstNameError:false}) 
+          setIsError({...isError,firstNameError:true}) 
         }
         break;
       }
       case 1: {
-        if (!e.target.value || e.target.value.length > 2) {
-          setIsError({...isError,lastNameError:true});
+        if (!e.target.value || e.target.value.length < 2) {
+          setIsError({...isError,lastNameError:false});
         } else {
-          setIsError({...isError,lastNameError:false}) 
+          setIsError({...isError,lastNameError:true}) 
         }
         break;
       }
@@ -93,27 +86,28 @@ const LoopRender = () => {
         !e.target.value.includes(".") ||
         e.target.value.startsWith("@") ||
         e.target.value.slice(e.target.value.lastIndexOf(".") + 1).length < 2) {
-          setIsError({...isError,emailError:true});
+          setIsError({...isError,emailError:false});
         } else {
-          setIsError({...isError,emailError:false}) 
+          setIsError({...isError,emailError:true}) 
         }
         break;
       }
       case 3: {
-        if (!e.target.value || e.target.value.length < 6) {
-          setIsError({...isError,passwordError:true});
+        let passwordPattern = /^(?=.*[a-zA-Z])(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{7,}$/
+        if (!passwordPattern.test(e.target.value)) {
+          setIsError({ ...isError, passwordError: false });
         } else {
-          setIsError({...isError,passwordError:false}) 
+          setIsError({...isError,passwordError:true}) 
         }
         break;
       }
       case 4: {
-        if (e.target.value === "" ||
+        if (e.target.value === "" || isNaN(e.target.value)||
         e.target.value.length !== 10 ||
         e.target.value[0] < 6) {
-          setIsError({...isError,phoneNumberError:true});
+          setIsError({...isError,phoneNumberError:false});
         } else {
-          setIsError({...isError,phoneNumberError:false}) 
+          setIsError({...isError,phoneNumberError:true}) 
         }
         break;
       }
@@ -123,9 +117,18 @@ const LoopRender = () => {
     }
   };
 
+  const submitForm = (e) => {
+    e.preventDefault();
+    setValues({firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    phoneNumber: ""})
+  }
+
   return (
     <div className="signup_wrapper">
-      <form>
+      <form onSubmit={submitForm}>
         <h1>SignUp</h1>
       {inputValues.map((inputVal, index) => {
         return (
@@ -139,7 +142,7 @@ const LoopRender = () => {
               onChange={onChangeEvent}
               onKeyUp={(e)=> validate(index)(e)}
             />
-            <p id="errorMsg">{isError[Object.keys(isError)[index]] ? inputVal.errorMessage:""}</p>
+            <p id="errorMsg">{!isError[Object.keys(isError)[index]] ? inputVal.errorMessage:""}</p>
           </div>
         );
       })}
