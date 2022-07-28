@@ -5,6 +5,8 @@ import Navbar from "./compoents/Navbar";
 import Home from "./compoents/Home/Home";
 import About from './compoents/About.js'
 import Contact from './compoents/Contact'
+import Signup from './compoents/signUp/signUpForm'
+import Login from './compoents/login/login'
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +16,8 @@ function App() {
           <Route path="/" element={ <Home />} />  
           <Route path="/about" element={ <About />} />  
           <Route path="/contact" element={ <Contact />} />  
+          <Route path="/signup" element={ <Signup />} />  
+          <Route path="/login" element={ <Login />} />  
         </Routes>
         
       </div>

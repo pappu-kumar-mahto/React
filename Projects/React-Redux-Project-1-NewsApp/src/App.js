@@ -10,23 +10,23 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Counter from "./components/Count";
 import NotFound from "./components/NotFound";
+import Signup from "./compoents/signUp/signUpForm";
+import Login from "./compoents/login/login";
 
 const App = () => {
-  
   return (
     <Provider store={store}>
       <BrowserRouter>
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/" element={<NewsList  />} />
+            <Route path="/" element={<NewsList />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/news/:id"
-              element={<SingleNews  />}
-            />
+            <Route path="/news/:id" element={<SingleNews />} />
             <Route path="/count" element={<Counter />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

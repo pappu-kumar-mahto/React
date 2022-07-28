@@ -33,8 +33,8 @@ const NavbarComponent = () => {
             <Nav.Link as={NavLink} to="/signup">
               Sign Up
             </Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              LogIn
+            <Nav.Link as={NavLink} to="/login">
+              Log in
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

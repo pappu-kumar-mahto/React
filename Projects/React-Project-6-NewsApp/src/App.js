@@ -9,6 +9,8 @@ import SingleNews from './components/SingleNews'
 import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from './components/NotFound'
+import Signup from './compoents/signUp/signUpForm'
+import Login from './compoents/login/login'
 
 const App = () => {
   const [newsList, setNewsList] = useState([]);
@@ -33,7 +35,9 @@ const App = () => {
           <Route path='/' element={<NewsList newsList={newsList}/> } />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path='/news/:id' element={<SingleNews newsList={newsList}/> } />
+          <Route path='/news/:id' element={<SingleNews newsList={newsList} />} />
+          <Route path="/signup" element={ <Signup />} />  
+          <Route path="/login" element={ <Login />} />  
           <Route path='*' element={<NotFound/> } />
         </Routes>
       </div>
