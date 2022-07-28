@@ -4,7 +4,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from './components/Navbar'
 import Products from './components/Products'
-import SignupForm from './components/signUp/FormUsingHook/signUpForm'
+import SignupForm from './components/signUp/signUpForm'
 import Login from './components/login/login'
 class App extends Component {
   render() {
