@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Alert } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "./FormusingHook.css";
+import swal from 'sweetalert';
 const SignupForm = () => {
   const {
     register,
@@ -25,12 +25,20 @@ const SignupForm = () => {
     setUsers([...users, data]);
   };
 
+  const submissionCompleted = () => {
+    swal({
+      title: "Registered",
+      text: "You have Signed up successfully",
+      icon: "success",
+    });
+  }
+
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
       console.log(users);
       setTimeout(() => {
-        alert("Signup successful")
+        submissionCompleted()
       }, 800);
     }
   }, [isSubmitSuccessful, reset]);
