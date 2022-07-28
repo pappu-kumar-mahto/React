@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import {NavLink} from 'react-router-dom'
 import "./FormusingHook.css";
 import swal from 'sweetalert';
 const SignupForm = () => {
@@ -37,6 +38,7 @@ const SignupForm = () => {
     if (isSubmitSuccessful) {
       reset();
       console.log(users);
+      localStorage.setItem("registeredUserData", JSON.stringify(users));
       setTimeout(() => {
         submissionCompleted()
       }, 800);
@@ -76,7 +78,7 @@ const SignupForm = () => {
             placeholder="Last name"
           />
           <p className="errorMsg">{errors.lastname?.message}</p>
-          <label htmlFor="lastname">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             className="form_Input"
             {...register("email", {
@@ -90,7 +92,7 @@ const SignupForm = () => {
             placeholder="Email"
           />
           <p className="errorMsg">{errors.email?.message}</p>
-          <label htmlFor="lastname">Password</label>
+          <label htmlFor="password">Password</label>
 
           <input
             className="form_Input"
@@ -108,7 +110,7 @@ const SignupForm = () => {
             placeholder="Password"
           />
           <p className="errorMsg">{errors.password?.message}</p>
-          <label htmlFor="lastname">Phone Number</label>
+          <label htmlFor="phonenumber">Phone Number</label>
           <input
             className="form_Input"
             {...register("phonenumber", {
@@ -123,6 +125,7 @@ const SignupForm = () => {
           />
           <p className="errorMsg">{errors.phonenumber?.message}</p>
           <button type="submit">SignUp</button>
+          <p>Already have a Account <span><NavLink to="/login">SignIn</NavLink></span></p>
         </form>
       </div>
     </>

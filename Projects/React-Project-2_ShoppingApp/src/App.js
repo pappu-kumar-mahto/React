@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from './components/Navbar'
 import Products from './components/Products'
 import SignupForm from './components/signUp/FormUsingHook/signUpForm'
-import Signup from './components/signUp/Signup'
+import Login from './components/login/login'
 class App extends Component {
   render() {
     return (
@@ -14,10 +14,10 @@ class App extends Component {
           <Navbar />
           <Routes>
             <Route path="/" element={<Products />}/>
-            {/* <Route path="/about" element={<Aboout />}/> */}
-            {/* <Route path="/contact" element={<Contact />}/> */}
+            {/* <Route path="/about" element={<Aboout />}/>
+             <Route path="/contact" element={<Contact />}/> */}
             <Route path="/signup" element={<SignupForm />}/>
-            <Route path="/signupcontrol" element={<Signup />}/>
+            <Route path="/login" element={<Login />}/>
           </Routes>
         </div>
       </BrowserRouter>
