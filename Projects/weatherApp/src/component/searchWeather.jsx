@@ -5,16 +5,14 @@ const SearchWeather = () => {
   const [data, setData] = useState([]);
   const [input, setInput] = useState("");
   let componentMouned = true;
-
   useEffect(() => {
     const fetchWeather = async () => {
       try {
         const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=246dfa6e2d1d4fed4d21b16bcd0275fc`
+          `${import.meta.env.VITE_APP_URL}${search}&appid=${import.meta.env.VITE_APP_API}`
         );
         if (componentMouned) {
           setData(await res.data);
-          console.log(res.data);
         }
         return () => {
           componentMouned = false;
