@@ -1,11 +1,10 @@
 import './App.css'
-import SearchaWeather from './component/searchWeather'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import WeatherReport from './component/weatherReport'
 function App() {
-
   return (
     <div>
-      <SearchaWeather/>
+      <WeatherReport/>
     </div>
   )
 }
