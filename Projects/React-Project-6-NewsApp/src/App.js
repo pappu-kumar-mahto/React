@@ -9,8 +9,8 @@ import SingleNews from './components/SingleNews'
 import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from './components/NotFound'
-import Signup from './compoents/signUp/signUpForm'
-import Login from './compoents/login/login'
+import Signup from './components/signUp/signUpForm'
+import Login from './components/login/login'
 
 const App = () => {
   const [newsList, setNewsList] = useState([]);
@@ -18,7 +18,7 @@ const App = () => {
     const fetchNews = async () => {
       try {
         const res = await axios.get(
-          "https://newsapi.org/v2/top-headlines?apiKey=c56aa996e4654733a6af9434349a647d&country=in"
+          `${process.env.REACT_APP_API_URL}?apiKey=${process.env.REACT_APP_API_KEY}=in`
         );
         setNewsList(res.data.articles);
       } catch (err) {
