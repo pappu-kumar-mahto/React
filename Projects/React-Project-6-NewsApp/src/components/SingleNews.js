@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { useParams } from 'react-router-dom'
 import './NewsList/NewsList.css'
 const SingleNews = ({ newsList }) => {
@@ -9,7 +9,7 @@ const SingleNews = ({ newsList }) => {
       <Row>
         {singleNews && (
                   <Col md={{span:'4', offset:'4'}} className="single-news">
-              <Card>
+              <Card style={{height:'75vh'}}>
                 <Card.Img
                   variant="top"
                   src={
@@ -27,10 +27,9 @@ const SingleNews = ({ newsList }) => {
                   </Card.Title>
                   <Card.Text>
                   {singleNews.description && singleNews.description.length > 180
-                      ? `${singleNews.description.slice(0, 180)}...`
+                      ? `${singleNews.description}`
                       : singleNews.description}
                   </Card.Text>
-                  <Button variant="dark">Read More</Button>
                 </Card.Body>
               </Card>
             </Col>

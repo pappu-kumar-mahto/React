@@ -11,7 +11,7 @@ const NavbarComponent = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
             src={Newslogo}
             className="d-inline-block align-top"

@@ -37,7 +37,6 @@ const SignupForm = () => {
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
-      console.log(users);
       localStorage.setItem("registeredUserData", JSON.stringify(users));
       setTimeout(() => {
         submissionCompleted()
