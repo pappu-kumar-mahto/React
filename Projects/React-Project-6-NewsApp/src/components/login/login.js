@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 import "../signUp/FormusingHook.css";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +8,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  let navigate = useNavigate()
   const getUserData = (e) => {
     const { name, value } = e.target;
     setUsers(() => {
@@ -70,12 +72,17 @@ const Login = () => {
         } else {
           toast.success("😊 Login successful", {
             position: "top-center",
-            autoClose: 1500,
+            autoClose: 1000,
             transition: Slide,
           });
+          setTimeout(() => {
+            navigate('/')
+          },2000)
+          
         }
       }
     }
+    
   };
 
   return (
