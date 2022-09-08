@@ -1,17 +1,24 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './redux/store';
+import {useSelector} from 'react-redux'
 import "./App.css";
-import HookCakeContainer from './components/cakeShop/HookCakeContainer';
-import IceCreamContainer from './components/IceCream/IceCreamContainer';
+import Login from './components/Login/Login';
+import Logout from './components/Logout/Logout'
+import { selectUser } from './redux/userSlice';
 const App = () => {
+
+  const user = useSelector(selectUser)
   return (
-    <Provider store={store}>
+ 
+
       <div className="App">
-        <HookCakeContainer />
-        <IceCreamContainer/>
+      {
+        user ? <Logout/> : <Login />
+        }
+          
+          
+       
     </div>
-    </Provider>
+
   );
 };
 
