@@ -1,1 +1,2 @@
-export { default as buyCake} from './cake/cakeAction'
+export { buyCake } from './cake/cakeAction';
+export {buyIceCream} from './IceCream/iceCreamAction'
