@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../signUp/FormusingHook.css";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+
 const Login = () => {
+  const navigate = useNavigate()
   const [users, setUsers] = useState({
     email: "",
     password: "",
@@ -68,11 +72,16 @@ const Login = () => {
             transition: Slide,
           });
         } else {
+          
           toast.success("😊 Login successful", {
             position: "top-center",
             autoClose: 1500,
             transition: Slide,
           });
+          setTimeout(() => {
+            navigate('/')
+          },2000)
+          
         }
       }
     }

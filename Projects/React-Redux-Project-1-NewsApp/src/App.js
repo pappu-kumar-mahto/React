@@ -8,10 +8,9 @@ import NewsList from "./components/NewsList/NewsList";
 import SingleNews from "./components/SingleNews";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Counter from "./components/Count";
 import NotFound from "./components/NotFound";
-import Signup from "./compoents/signUp/signUpForm";
-import Login from "./compoents/login/login";
+import Signup from "./components/signUp/signUpForm";
+import Login from "./components/login/login";
 
 const App = () => {
   return (
@@ -24,7 +23,6 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/news/:id" element={<SingleNews />} />
-            <Route path="/count" element={<Counter />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />

@@ -21,7 +21,6 @@ export const fetchNews = () => {
         try {
             dispatch(fetchNewsRequested())
             let res = await axios.get("https://newsapi.org/v2/top-headlines?apiKey=c56aa996e4654733a6af9434349a647d&country=in")
-            console.log("Api Callled")
             dispatch(fetchNewsSuccess(res.data.articles))
         } catch (error) {
             dispatch(fetchNewsFailure(error.message))

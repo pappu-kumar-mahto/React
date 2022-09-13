@@ -43,7 +43,7 @@ const SignupForm = () => {
         submissionCompleted()
       }, 800);
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, reset, users]);
 
   return (
     <>
