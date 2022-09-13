@@ -4,7 +4,7 @@ import './NewsList/NewsList.css'
 import { useSelector } from "react-redux";
 const SingleNews = () => {
   const { id } = useParams()
-  const newsList = useSelector(state=>state.news.newsList)
+  const {data: newsList} = useSelector(state=>state.news)
     let singleNews = newsList && id && newsList[id]
   return (
     <Container>

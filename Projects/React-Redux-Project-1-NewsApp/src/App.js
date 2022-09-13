@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import store from "./features/store";
 import Navbar from "./components/Navbar";
-import NewsList from "./components/NewsList/NewsList";
+import NewsResult from "./components/NewsResult/NewsResult";
 import SingleNews from "./components/SingleNews";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -19,7 +19,7 @@ const App = () => {
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/" element={<NewsList />} />
+            <Route path='/' element={<NewsResult />}/>
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/news/:id" element={<SingleNews />} />

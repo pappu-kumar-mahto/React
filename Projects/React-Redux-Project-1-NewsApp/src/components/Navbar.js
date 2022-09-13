@@ -23,7 +23,7 @@ const NavbarComponent = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={NavLink} to ='/'>NewsList</Nav.Link>
+            <Nav.Link as={NavLink} to ='/'>News</Nav.Link>
             <Nav.Link as={NavLink} to ='/about'>About Us</Nav.Link>
             <Nav.Link as={NavLink} to ='/contact'>Contact Us</Nav.Link>
           </Nav>
